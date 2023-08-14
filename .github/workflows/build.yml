@@ -17,11 +17,14 @@ jobs:
         dotnet-version: 6.0.x
     - name: Restore dependencies
       run: |
-        dotnet restore AGSUnpacker.Lib
+          dotnet restore AGSUnpacker.Lib
+          dotnet restore AGSUnpacker.Graphics.GDI
     - name: Build
       run: |
-        dotnet build --no-restore AGSUnpacker.Lib
+          dotnet build --no-restore AGSUnpacker.Lib
+          dotnet build --no-restore AGSUnpacker.Graphics.GDI
     - name: Publish
       run: |
           dotnet pack AGSUnpacker.Lib -o out
+          dotnet pack AGSUnpacker.Graphics.GDI -o out
           dotnet nuget push "out/*.nupkg" --api-key "${{ secrets.NUGET_API_KEY }}" --source https://api.nuget.org/v3/index.json --skip-duplicate

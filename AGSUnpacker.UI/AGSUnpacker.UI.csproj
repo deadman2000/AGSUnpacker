@@ -10,6 +10,7 @@
     <Win32Resource />
     <Version>0.6</Version>
     <Authors>AdM244</Authors>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -50,5 +51,7 @@
   <ItemGroup>
     <Folder Include="Resources\" />
   </ItemGroup>
+
+  <Import Project="..\AGSUnpacker.Shared\AGSUnpacker.Shared.projitems" Label="Shared" />
 
 </Project>

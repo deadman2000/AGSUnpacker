@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31702.278
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AGSUnpacker.Lib", "AGSUnpacker.Lib\AGSUnpacker.Lib.csproj", "{EF222ED2-DC7F-482A-B718-DCD844C6AB8E}"
 EndProject
@@ -26,14 +26,6 @@ EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "AGSUnpacker.Shared", "AGSUnpacker.Shared\AGSUnpacker.Shared.shproj", "{DCF0C944-957E-473B-99EA-7212E2829846}"
 EndProject
 Global
-	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		AGSUnpacker.Graphics\AGSUnpacker.Graphics.projitems*{144b897c-c3c8-4f0c-b982-0b039aa3a030}*SharedItemsImports = 13
-		AGSUnpacker.Graphics\AGSUnpacker.Graphics.projitems*{a200f908-dbbb-4ebe-a10c-7d9f1c462724}*SharedItemsImports = 5
-		AGSUnpacker.Graphics\AGSUnpacker.Graphics.projitems*{d25e197f-f6e1-48b8-8734-d41e51d5c3f7}*SharedItemsImports = 5
-		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{d25e197f-f6e1-48b8-8734-d41e51d5c3f7}*SharedItemsImports = 5
-		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{dcf0c944-957e-473b-99ea-7212e2829846}*SharedItemsImports = 13
-		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{ef222ed2-dc7f-482a-b718-dcd844c6ab8e}*SharedItemsImports = 5
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -65,5 +57,15 @@ Global
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF873C8E-5F78-4DAF-9728-41A303E49C49}
+	EndGlobalSection
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		AGSUnpacker.Graphics\AGSUnpacker.Graphics.projitems*{144b897c-c3c8-4f0c-b982-0b039aa3a030}*SharedItemsImports = 13
+		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{7c2610f0-eb62-47fa-b56c-e2da71b78d11}*SharedItemsImports = 5
+		AGSUnpacker.Graphics\AGSUnpacker.Graphics.projitems*{a200f908-dbbb-4ebe-a10c-7d9f1c462724}*SharedItemsImports = 5
+		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{a200f908-dbbb-4ebe-a10c-7d9f1c462724}*SharedItemsImports = 5
+		AGSUnpacker.Graphics\AGSUnpacker.Graphics.projitems*{d25e197f-f6e1-48b8-8734-d41e51d5c3f7}*SharedItemsImports = 5
+		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{d25e197f-f6e1-48b8-8734-d41e51d5c3f7}*SharedItemsImports = 5
+		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{dcf0c944-957e-473b-99ea-7212e2829846}*SharedItemsImports = 13
+		AGSUnpacker.Shared\AGSUnpacker.Shared.projitems*{ef222ed2-dc7f-482a-b718-dcd844c6ab8e}*SharedItemsImports = 5
 	EndGlobalSection
 EndGlobal

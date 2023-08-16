@@ -75,12 +75,17 @@ namespace AGSUnpacker.Lib.Translation
             return true;
         }
 
-        public void Compile(string filepath)
-        {
-            Compile(filepath, GameID, GameName);
-        }
+        public void Compile(string filepath) => Compile(filepath, GameID, GameName);
+
+        public void Compile(Stream stream) => Compile(stream, GameID, GameName);
 
         public void Compile(string filepath, int gameID, string gameName)
+        {
+            using FileStream stream = new(filepath, FileMode.Create, FileAccess.Write);
+            Compile(stream, gameID, gameName);
+        }
+
+        public void Compile(Stream stream, int gameID, string gameName)
         {
             if (OriginalLines.Count != TranslatedLines.Count)
             {
@@ -91,8 +96,7 @@ namespace AGSUnpacker.Lib.Translation
             GameID = gameID;
             GameName = gameName;
 
-            using FileStream stream = new FileStream(filepath, FileMode.Create, FileAccess.Write);
-            using BinaryWriter writer = new BinaryWriter(stream, OriginalEncoding);
+            BinaryWriter writer = new(stream, OriginalEncoding);
             
             writer.WriteFixedString(TRA_SIGNATURE, TRA_SIGNATURE.Length);
 
@@ -111,8 +115,8 @@ namespace AGSUnpacker.Lib.Translation
 
         private void WriteBlock(BinaryWriter writer, BlockType type)
         {
-            writer.Write((UInt32)type);
-            writer.Write((UInt32)0xDEADBEAF);
+            writer.Write((uint)type);
+            writer.Write(0xDEADBEAF);
 
             long blockStart = writer.BaseStream.Position;
 
@@ -120,7 +124,7 @@ namespace AGSUnpacker.Lib.Translation
             {
                 case BlockType.Header:
                     {
-                        writer.Write((UInt32)GameID);
+                        writer.Write((uint)GameID);
                         writer.WriteEncryptedCString(GameName);
                     }
                     break;
@@ -158,9 +162,9 @@ namespace AGSUnpacker.Lib.Translation
             long blockEnd = writer.BaseStream.Position;
 
             //NOTE(adm244): go back and write a block size
-            UInt32 blockSize = (UInt32)(blockEnd - blockStart);
-            writer.BaseStream.Position = (blockStart - sizeof(UInt32));
-            writer.Write((UInt32)blockSize);
+            uint blockSize = (uint)(blockEnd - blockStart);
+            writer.BaseStream.Position = (blockStart - sizeof(uint));
+            writer.Write(blockSize);
 
             writer.BaseStream.Position = blockEnd;
         }
@@ -230,7 +234,7 @@ namespace AGSUnpacker.Lib.Translation
         //FIXME(adm244): duplicate of AGSRoom.WriteOptionsExtensionBlock
         private bool WriteOptionsExtensionBlock(BinaryWriter writer)
         {
-            writer.Write((Int32)Options.Count);
+            writer.Write(Options.Count);
 
             foreach (var option in Options)
             {

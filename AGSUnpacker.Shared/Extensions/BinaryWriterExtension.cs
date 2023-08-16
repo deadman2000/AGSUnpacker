@@ -55,7 +55,7 @@ namespace AGSUnpacker.Shared.Extensions
         {
             encoding ??= Encoding.Latin1;
             
-            byte[] buffer = AGSEncryption.EncryptAvisBuffer(encoding.GetBytes(text));
+            byte[] buffer = AGSEncryption.EncryptAvisBuffer(encoding.GetBytes(text + "\0"));
             writer.Write((Int32)buffer.Length);
             writer.Write((byte[])buffer);
         }

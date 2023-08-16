@@ -91,25 +91,22 @@ namespace AGSUnpacker.Lib.Translation
             GameID = gameID;
             GameName = gameName;
 
-            using (FileStream stream = new FileStream(filepath, FileMode.Create, FileAccess.Write))
-            {
-                using (BinaryWriter writer = new BinaryWriter(stream, OriginalEncoding))
-                {
-                    writer.WriteFixedString(TRA_SIGNATURE, TRA_SIGNATURE.Length);
+            using FileStream stream = new FileStream(filepath, FileMode.Create, FileAccess.Write);
+            using BinaryWriter writer = new BinaryWriter(stream, OriginalEncoding);
+            
+            writer.WriteFixedString(TRA_SIGNATURE, TRA_SIGNATURE.Length);
 
-                    WriteBlock(writer, BlockType.Header);
-                    WriteBlock(writer, BlockType.Content);
+            WriteBlock(writer, BlockType.Header);
+            WriteBlock(writer, BlockType.Content);
 
-                    //TODO(adm244): implement settings block
-                    //WriteBlock(writer, BlockType.Settings);
+            //TODO(adm244): implement settings block
+            //WriteBlock(writer, BlockType.Settings);
 
-                    if (Options.Count > 0)
-                        ExtensionBlock.WriteSingle(writer, "ext_sopts", WriteExtensionBlock,
-                          ExtensionBlock.Options.Id32 | ExtensionBlock.Options.Size64);
+            if (Options.Count > 0)
+                ExtensionBlock.WriteSingle(writer, "ext_sopts", WriteExtensionBlock,
+                  ExtensionBlock.Options.Id32 | ExtensionBlock.Options.Size64);
 
-                    WriteBlock(writer, BlockType.End);
-                }
-            }
+            WriteBlock(writer, BlockType.End);
         }
 
         private void WriteBlock(BinaryWriter writer, BlockType type)
